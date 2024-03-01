@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <RootNamespace>HuginAndMunin</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.24.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.60.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server.ClientFactory" Version="2.60" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.60.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.60.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.60.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Protobuf ProtoRoot="Protos" Include="Protos/Report.proto" GrpcServices="Server" />
+    <Protobuf ProtoRoot="Protos" Include="Protos/CredChecker.proto" GrpcServices="Client">
+      <SourceUrl>https://raw.githubusercontent.com/hugin-and-munin/cred-checker/master/api/cred-checker.proto</SourceUrl>
+    </Protobuf>
+    <Protobuf ProtoRoot="Protos" Include="Protos/LegalEntities.proto" GrpcServices="Client">
+      <SourceUrl>https://raw.githubusercontent.com/hugin-and-munin/legal-entities/main/src/Protos/LegalEntities.proto</SourceUrl>
+    </Protobuf>
+  </ItemGroup>
+</Project>

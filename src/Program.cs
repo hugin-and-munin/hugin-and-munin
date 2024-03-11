@@ -15,7 +15,6 @@ var appOptions = config.GetSection(AppOptions.Name).Get<AppOptions>() ?? throw n
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpClient();
-builder.Services.AddHealthChecks().AddCheck<HealthCheck>("Health");
 builder.Services.Configure<AppOptions>(config.GetSection(AppOptions.Name));
 builder.Services.AddGrpc();
 builder.Services.AddGrpcClient<LegalEntityCheckerClient>(o => o.Address = new Uri(appOptions.LegalEntitiesCheckerUri));
@@ -24,6 +23,6 @@ builder.Services.AddGrpcClient<CredCheckerClient>(o => o.Address = new Uri(appOp
 var app = builder.Build();
 
 app.MapGrpcService<HuginAndMunin.ReportProvider>();
-app.MapHealthChecks("/health");
+app.MapGrpcService<HealthCheck>();
 
 await app.RunAsync();

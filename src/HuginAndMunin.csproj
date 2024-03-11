@@ -19,6 +19,7 @@
   </ItemGroup>
   <ItemGroup>
     <Protobuf ProtoRoot="Protos" Include="Protos/Report.proto" GrpcServices="Server" />
+    <Protobuf ProtoRoot="Protos" Include="Protos/Health.proto" GrpcServices="Server" />
     <Protobuf ProtoRoot="Protos" Include="Protos/CredChecker.proto" GrpcServices="Client">
       <SourceUrl>https://raw.githubusercontent.com/hugin-and-munin/cred-checker/master/api/cred-checker.proto</SourceUrl>
     </Protobuf>

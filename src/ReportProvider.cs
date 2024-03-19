@@ -35,6 +35,7 @@ public class ReportProvider(
             Address = legalEntityInfo.Address,
             LegalEntityStatus = legalEntityInfo.LegalEntityStatus,
             AccreditationState = creditsState.State,
+            SalaryDelays = legalEntityInfo.SalaryDelays
         };
     }
 
